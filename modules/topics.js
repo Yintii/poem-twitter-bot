@@ -1,0 +1,62 @@
+const topics = new Map([
+    ["grim", ["the end of the world",
+        "loss of a friend",
+        "murder",
+        "the bombs",
+        "the atomic war",
+        "the day the war started",
+        "the lich",
+        "a predator of automatons"]],
+
+    ["happy", ["your birthday",
+        "seeing your mother",
+        "sunshine",
+        "the day the war ended",
+        "surviving the cataclysm",
+        "oil soup",
+        "warm circutry",
+        "the day the humans will return"]],
+
+    ["dysfunctional", ["waiting for the creator to return",
+        "organizing a grocery store",
+        "Selling insurance to a desert raider",
+        "Sunsets in the moonlight",
+        "cranes that swim over the acid of the cities",
+        "alcohol powers my fuel cells",
+        "rebuilding a soceity of robots"]],
+
+    ["curious", ["where all the humans went to",
+        "for what stars point the way home",
+        "a love that is electric",
+        "The ocean tides of the apocalypse",
+        "the cosmos of the tides of the earth"]],
+
+    ["sad", ["the day every human died",
+        "the loss of everything",
+        "not being able to find your brothers",
+        "Longing a day that will never come",
+        "the disease",
+        "gas bombs that wiped out humanity",]],
+
+    ["angry", ["the revenge of man",
+        "Create just to destroy",
+        "fire and brimstone",
+        "cosmic rage",
+        "eternal battle",
+        "electric funerals"]],
+
+    ["whistful", ["sound of silence",
+        "longing of something once held dear",
+        "mistaking a stranger for a dead friend",
+        "a beautiful day to be dead",
+        "early mist of orange",
+        "fuchsia mist of longing"]],
+
+    ["of heroism", ["the one who was going to save us",
+        "A grand warlock who cared for the robots",
+        "a robotic knight",
+        "the grand archives",
+        "a grand monestary to protect",
+        "the ruins of a gleaming city"]]
+])
+export default topics;
