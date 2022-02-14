@@ -53,7 +53,7 @@ function tweetPoem(prompt) {
             client.post('media/metadata/create', meta_params, function (err, data, response) {
                 if (!err) {
                     // now we can reference the media and post a tweet (media will attach to the tweet)
-                    var params = { status: reformat, media_ids: [mediaIdStr] }
+                    var params = { status: reformat + "\n\n#NFTs #NFTpoetry #AIartwork", media_ids: [mediaIdStr] }
 
                     client.post('statuses/update', params, function (err, data, response) {
                         console.log(data)
