@@ -4,7 +4,6 @@ import openai from 'openai-node';
 import dotenv from 'dotenv'
 import Twit from 'twit';
 import config from './config.js';
-import fs from 'fs';
 dotenv.config({ silent: true });
 
 const client = new Twit(config);
@@ -18,7 +17,7 @@ setInterval(() => {
     console.log(prompt);
     tweetPoem(prompt);
 
-}, 1000 * 60 * 45);
+}, 1000 * 60 * 30);
 
 
 //Completion
@@ -40,27 +39,9 @@ function tweetPoem(prompt) {
     }).then((response) => {
         let reformat = response.choices[0].text.split("\n").filter(each => each !== '').join('\n');
         console.log(`TOPIC: ${prompt}\n--------------------\n${reformat}\n--------------------\n`);
-        var b64content = fs.readFileSync(`./bot-dreams/${Math.floor(Math.random() * 5554)}.png`, { encoding: 'base64' })
-
-        // first we must post the media to Twitter
-        client.post('media/upload', { media_data: b64content }, function (err, data, response) {
-            // now we can assign alt text to the media, for use by screen readers and
-            // other text-based presentations and interpreters
-            var mediaIdStr = data.media_id_string
-            var altText = "An image from one of the Poetry By Robots NFT collection"
-            var meta_params = { media_id: mediaIdStr, alt_text: { text: altText } }
-
-            client.post('media/metadata/create', meta_params, function (err, data, response) {
-                if (!err) {
-                    // now we can reference the media and post a tweet (media will attach to the tweet)
-                    var params = { status: reformat, media_ids: [mediaIdStr] }
-
-                    client.post('statuses/update', params, function (err, data, response) {
-                        console.log(data)
-                    })
-                }
-            })
-        })
+        client.post('statuses/update', { status: reformat.toString() + "\n #NFTs #NFTpoetry\n\n https://poetrybyrobots.com" }, (res, rej) => {
+             if (rej) console.log(rej);
+         });
     });
 }
 
